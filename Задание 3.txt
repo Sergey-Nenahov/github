@@ -14,6 +14,61 @@ int main()
 	cout << "*yy2 = " << *yy2 << endl;
 	cout << "*yy3 = " << *yy3 << endl;
 	cout << "z[3] = " << z[0] << ", " << z[1] << ", " << z[2] << endl;
+	_asm
+	{
+		mov         eax, 4
+		imul        ecx, eax, 0
+		mov         edx, 4
+		imul        eax, edx, 0
+		mov         ecx, dword ptr x[ecx]
+		mov         dword ptr z[eax], ecx
+		mov         eax, 4
+		shl         eax, 0
+		mov         ecx, 4
+		shl         ecx, 0
+		mov         edx, dword ptr x[eax]
+		mov         dword ptr z[ecx], edx
+		mov         eax, 4
+		shl         eax, 1
+		mov         ecx, 4
+		shl         ecx, 1
+		mov         edx, dword ptr x[eax]
+		mov         dword ptr z[ecx], edx
+		mov         eax, 4
+		imul        ecx, eax, 0
+		mov         edx, dword ptr[yy1]
+		mov         eax, dword ptr[edx]
+		mov         dword ptr x[ecx], eax
+		mov         eax, 4
+		shl         eax, 0
+		mov         ecx, dword ptr[yy2]
+		mov         edx, dword ptr[ecx]
+		mov         dword ptr x[eax], edx
+		mov         eax, 4
+		shl         eax, 1
+		mov         ecx, dword ptr[yy3]
+		mov         edx, dword ptr[ecx]
+		mov         dword ptr x[eax], edx
+		mov         eax, 4
+		imul        ecx, eax, 0
+		mov         edx, 4
+		imul        eax, edx, 0
+		mov         ecx, dword ptr z[ecx]
+		mov         dword ptr y[eax], ecx
+		mov         eax, 4
+		shl         eax, 0
+		mov         ecx, 4
+		shl         ecx, 0
+		mov         edx, dword ptr z[eax]
+		mov         dword ptr y[ecx], edx
+		mov         eax, 4
+		shl         eax, 1
+		mov         ecx, 4
+		shl         ecx, 1
+		mov         edx, dword ptr z[eax]
+		mov         dword ptr y[ecx], edx
+	}
+	/*
 	{
 		z[0] = x[0];
 		z[1] = x[1];
@@ -27,6 +82,9 @@ int main()
 		cout << "x[4] = " << x[0] << ", " << x[1] << ", " << x[2] << ", " << x[3] << endl;
 		cout << "y[3] = " << y[0] << ", " << y[1] << ", " << y[2] << endl;
 	}
+	*/
+	cout << "x[4] = " << x[0] << ", " << x[1] << ", " << x[2] << ", " << x[3] << endl;
+	cout << "y[3] = " << y[0] << ", " << y[1] << ", " << y[2] << endl;
 	system("pause");
 	return 0;
 }
